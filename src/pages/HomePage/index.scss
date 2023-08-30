@@ -57,10 +57,17 @@
   flex-direction: column;
 
   .sneaker-list-header {
-    letter-spacing: 4px;
-    color: #69696c;
-    font-size: 0.8rem;
-    padding: 5%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding-left: 3.5%;
+
+    .sneaker-title {
+      letter-spacing: 4px;
+      color: #69696c;
+      font-size: 0.8rem;
+      padding: 5%;
+    }
   }
 }
 
