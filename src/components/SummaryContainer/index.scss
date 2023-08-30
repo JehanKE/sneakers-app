@@ -1,0 +1,70 @@
+.summary-container {
+  background-color: white;
+  border: 2px solid #babfc7;
+  width: 100%;
+  margin: 10%;
+  padding: 5%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 5px #ebebeb;
+  font-family: sans-serif;
+  cursor: pointer;
+
+  .summary-value-div {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #e5e4e4;
+    padding-bottom: 8%;
+    cursor: pointer;
+
+    .total-val-label {
+      letter-spacing: 3px;
+      color: #69696c;
+      font-size: 0.7rem;
+      cursor: pointer;
+    }
+
+    .total-amount-label {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: #6baa79;
+      cursor: pointer;
+    }
+  }
+
+  .summary-shoe-count-container {
+    margin-top: 8%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    cursor: pointer;
+
+    .shoe-count-icon {
+      background-color: #e9e9e9;
+      width: fit-content;
+      border-radius: 5px;
+      height: fit-content;
+      font-size: 1.25rem;
+      padding: 15% 20% 5% 15%;
+      cursor: pointer;
+    }
+
+    .shoe-count-text {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      padding-left: 2%;
+
+      .count-text-header {
+        letter-spacing: 4px;
+        color: #69696c;
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+
+      .count-text-number {
+        font-size: 0.8rem;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+  }
+}
