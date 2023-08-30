@@ -85,11 +85,12 @@ const HomePage = () => {
             <SummaryContainer list={sneakerList} />
           </div>
           <div className="sneaker-list-container">
-            <div>
-              <label className="sneaker-list-header">SNEAKERS</label>
+            <div className="sneaker-list-header">
+              <label className="sneaker-title">SNEAKERS</label>
               <AutoComplete
                 style={{
                   width: "65%",
+                  padding: "1%"
                 }}
                 options={options}
                 placeholder="Search"
