@@ -1,0 +1,23 @@
+.tab-container {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: sans-serif;
+  letter-spacing: 3px;
+
+  .tab-text {
+    color: white;
+    padding-bottom: 1%;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .selected-tab-text {
+    color: white;
+    border-bottom: 3px solid white;
+    padding-bottom: 1%;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+  }
+}

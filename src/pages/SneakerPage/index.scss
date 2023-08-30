@@ -1,0 +1,109 @@
+.sneaker-page-container {
+  height: 100dvh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: sans-serif;
+  font-size: 1rem;
+
+  .sneaker-page-header {
+    background-color: #1d1e31;
+    color: white;
+    width: 100%;
+    height: fit-content;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    .back-link {
+      padding-left: 5%;
+      .back-icon {
+        color: white;
+        font-size: 1rem;
+        padding-top: 0.5rem;
+      }
+    }
+
+    .buy-link {
+      padding-right: 5%;
+      .buy-icon {
+        color: white;
+        font-size: 1rem;
+        padding-top: 0.5rem;
+      }
+    }
+
+    .brand-icon {
+      color: white;
+      font-size: 1.75rem;
+    }
+  }
+
+  .sneaker-page-image-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 5%;
+    border-bottom: 2px solid #e5e4e4;
+    padding-bottom: 5%;
+
+    .sneaker-page-image {
+      width: 80%;
+    }
+  }
+
+  .details-conatiner {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+
+    .details-label {
+      font-family: sans-serif;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #686878;
+      padding-left: 5%;
+    }
+
+    .sneaker-details {
+      display: grid;
+      padding-left: 5%;
+      grid-template-columns: 50% 50%;
+      padding: 5%;
+      row-gap: 2rem;
+      column-gap: 2rem;
+
+      .detail-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .detail-title {
+          font-family: sans-serif;
+          color: #686878;
+          font-weight: bold;
+          letter-spacing: 3px;
+          font-size: 0.8rem;
+        }
+
+        .detail-content {
+          font-family: sans-serif;
+          color: black;
+          font-weight: bold;
+          letter-spacing: 3px;
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          padding-top: 2%;
+        }
+
+        .price {
+          color: #6baa79;
+        }
+      }
+    }
+  }
+}
