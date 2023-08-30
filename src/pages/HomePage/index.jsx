@@ -6,6 +6,7 @@ import SummaryContainer from "../../components/SummaryContainer";
 import Tabs from "../../components/Tabs";
 import { sneakerConfig } from "../../configs/SneakerConfig";
 import { getSortedList } from "../../utils/utils";
+import { AutoComplete } from 'antd';
 import "./index.scss";
 
 const HomePage = () => {
@@ -13,18 +14,28 @@ const HomePage = () => {
     (state) => state.sneaker
   );
   const [sneakerList, setSneakerList] = useState();
+  const [options,setOptions] = useState();
+  const [searchValue,setSearchValue] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     setSneakerList(
       sneakerConfig.filter((sneaker) => sneaker.status === listType)
     );
+    setSearchValue('');
     dispatch({
       type: "sneaker/updateSortType",
       payload: null,
     });
     // eslint-disable-next-line
   }, [listType]);
+
+  useEffect(() => {
+    const tempOptions = sneakerList?.map((sneaker) => {
+      return ({ value: sneaker.sneakerName })
+    });
+    setOptions(tempOptions);
+  }, [sneakerList])
 
   useEffect(() => {
     if (sortType !== null) {
@@ -39,6 +50,22 @@ const HomePage = () => {
       payload: selectedTab,
     });
   };
+
+  const handleSearch = (value) => {
+    setSearchValue(value);
+    if(value !== undefined) {
+      setSneakerList(
+        sneakerConfig.filter((sneaker) => 
+          sneaker.sneakerName?.toUpperCase().includes(value?.toUpperCase())
+          && sneaker.status === listType
+        )
+      );
+    } else {
+      setSneakerList(
+        sneakerConfig.filter((sneaker) => sneaker.status === listType)
+      );
+    }
+  }
 
   return (
     <>
@@ -58,7 +85,23 @@ const HomePage = () => {
             <SummaryContainer list={sneakerList} />
           </div>
           <div className="sneaker-list-container">
-            <label className="sneaker-list-header">SNEAKERS</label>
+            <div>
+              <label className="sneaker-list-header">SNEAKERS</label>
+              <AutoComplete
+                style={{
+                  width: "65%",
+                }}
+                options={options}
+                placeholder="Search"
+                filterOption={(inputValue, option) =>
+                  option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                }
+                bordered={false}
+                allowClear={true}
+                value={searchValue}
+                onChange={handleSearch}
+              />
+            </div>
             {sneakerList?.map((sneaker, idx) => {
               return <SneakerContainer key={idx} sneaker={sneaker} />;
             })}
