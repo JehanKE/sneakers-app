@@ -60,13 +60,13 @@
     width: 90%;
     display: grid;
     grid-template-columns: 30% 70%;
-    padding-left: 3.5%;
+    padding: 0.5% 0% 0.5% 4%;
 
     .sneaker-title {
       letter-spacing: 4px;
       color: #69696c;
       font-size: 0.8rem;
-      padding: 5%;
+      align-self: center;
     }
   }
 }
