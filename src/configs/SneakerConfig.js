@@ -244,7 +244,7 @@ const sneakerConfig = [
   },
     {
     URL: "https://www.goat.com/en-gb/sneakers/nike-sb-x-air-jordan-4-retro-pine-green-dr5415-103",
-    purchaseLocation: "Gift, Bangalore, August 2023",
+    purchaseLocation: "Gift, Bangalore, November 2023",
     sneakerName: "Nike SB x Air Jordan 4 Retro SP 'Pine Green'",
     styleNumber: "DR5415-103",
     dollarPrice: 225,
