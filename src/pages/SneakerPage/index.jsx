@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { BsFillBagFill } from "react-icons/bs";
-import { mapBrandToIcon } from "../../utils/utils";
+import { getTodaysDate, mapBrandToIcon } from "../../utils/utils";
 import { useEffect, useState } from "react";
 import "./index.scss";
 
@@ -80,7 +80,8 @@ const SneakerPage = () => {
           <div className="detail-wrapper">
             <label className="detail-title">LAST WORN</label>
             <label className="detail-content">
-              <input className="date-picker" type="date" onChange={handleDateChange} defaultValue={lastWorn}/>
+              {console.log(getTodaysDate())}
+              <input className="date-picker" type="date" onChange={handleDateChange} defaultValue={lastWorn} max={getTodaysDate()}/>
             </label>
           </div>
         </div>
