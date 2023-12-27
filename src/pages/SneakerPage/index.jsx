@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { BsFillBagFill } from "react-icons/bs";
@@ -10,6 +10,7 @@ const SneakerPage = () => {
   const { sneakerPage } = useSelector((state) => state.sneaker);
   const [lastWorn, setLastWorn] = useState(null);
   const lastWornConfig = localStorage.getItem('lastWorn');
+  const dispatch = useDispatch();
 
   const handleDateChange = (event) => {
     const currentLastWorn = JSON.parse(lastWornConfig);
@@ -27,6 +28,13 @@ const SneakerPage = () => {
     }
     setLastWorn( (input === null || input === undefined) ? null : defaultVal );
   }, [lastWornConfig, sneakerPage.styleNumber]);
+
+  useEffect(() => {
+    dispatch({
+      type: "sneaker/updateSortType",
+      payload: null,
+    });
+  });
 
   return (
     <div className="sneaker-page-container">

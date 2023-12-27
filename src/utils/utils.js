@@ -15,6 +15,16 @@ const getSortedList = (sortType, list) => {
       return tempList?.sort((a, b) => (a.color > b.color ? 1 : -1));
     case "Brand":
       return tempList?.sort((a, b) => (a.brand > b.brand ? 1 : -1));
+    case "Worn":
+      const modifiedList = tempList?.map(sneaker => {
+        const lastWornAddVal = JSON.parse(localStorage.getItem('lastWorn')).filter((localSneaker) => localSneaker.styleNumber === sneaker.styleNumber)[0]["lastWorn"];
+        return {...sneaker, lastWorn: lastWornAddVal};
+      });
+      const sortedList = modifiedList?.sort((a, b) => new Date(a.lastWorn) - new Date(b.lastWorn))
+      sortedList?.forEach(sneaker => {
+        delete sneaker['lastWorn'];
+      });
+      return sortedList;
     default:
       return tempList;
   }
