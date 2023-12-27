@@ -18,7 +18,7 @@ import KobeGrinch from "../resources/images/kobe_grinch.webp";
 import KobeAf1 from "../resources/images/kobe_af1.webp";
 import VoomeroDorn from "../resources/images/voomero_dornbeck.webp";
 import Jordan4Sb from "../resources/images/jordan_4_sb_pine.webp";
-import TravisPhantom from "../resources/images/travis_phantom.webp";
+import KobeReverseGrinch from "../resources/images/kobe_reverse_grinch.webp";
 
 const sneakerConfig = [
   {
@@ -282,16 +282,16 @@ const sneakerConfig = [
     releaseDate: "25 FEBRUARY 2023",
   },
   {
-    URL: "https://www.goat.com/sneakers/travis-scott-x-air-jordan-1-low-og-sp-black-phantom-dm7866-001",
+    URL: "https://www.goat.com/sneakers/zoom-kobe-6-protro-reverse-grinch-fv4921-600",
     purchaseLocation: "N/A",
-    sneakerName: "Travis Scott x Air Jordan 1 Low OG SP 'Black Phantom'",
-    styleNumber: "DM7866-001",
-    dollarPrice: 150,
+    sneakerName: "Zoom Kobe 6 Protro 'Reverse Grinch'",
+    styleNumber: "FV4921-600",
+    dollarPrice: 190,
     purchaseOrder: 3,
-    brand: "Jordan",
-    image: TravisPhantom,
+    brand: "Nike",
+    image: KobeReverseGrinch,
     status: "WISH LIST",
-    color: "Black",
+    color: "Red",
     releaseDate: "15 DECEMBER 2023",
   }
 ];

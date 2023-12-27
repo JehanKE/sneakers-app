@@ -80,7 +80,7 @@ const SneakerPage = () => {
           <div className="detail-wrapper">
             <label className="detail-title">LAST WORN</label>
             <label className="detail-content">
-              <input type="date" onChange={handleDateChange} defaultValue={lastWorn}/>
+              <input className="date-picker" type="date" onChange={handleDateChange} defaultValue={lastWorn}/>
             </label>
           </div>
         </div>
