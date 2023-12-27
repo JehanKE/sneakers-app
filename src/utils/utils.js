@@ -1,5 +1,6 @@
 import { SiJordan, SiPuma, SiNike } from "react-icons/si";
 import { CgAdidas } from "react-icons/cg";
+import { sneakerConfig } from "../configs/SneakerConfig";
 
 const getSortedList = (sortType, list) => {
   const tempList = [...list];
@@ -34,4 +35,14 @@ const mapBrandToIcon = (brand) => {
   }
 };
 
-export { getSortedList, mapBrandToIcon };
+const getLastWornConfig = () => {
+  const lastWornConfig = [];
+  sneakerConfig.forEach(sneaker => {
+    lastWornConfig.push(
+      { styleNumber: sneaker.styleNumber, lastWorn: null }
+    )
+  });
+  return lastWornConfig;
+};
+
+export { getSortedList, mapBrandToIcon, getLastWornConfig };
