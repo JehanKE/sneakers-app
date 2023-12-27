@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./index.scss";
+import { useEffect, useState } from "react";
 
 const SneakerContainer = (props) => {
   const { currency, conversionRate, isOpaque } = useSelector(
@@ -9,7 +10,10 @@ const SneakerContainer = (props) => {
   const sneakerImage = props.sneaker.image;
   const sneakerName = props.sneaker.sneakerName;
   const sneakerPrice = props.sneaker.dollarPrice;
+  const styleNumber = props.sneaker.styleNumber;
+  const [lastWorn,setLastWorn] = useState(null);
   const dispatch = useDispatch();
+  const lastWornConfig = localStorage.getItem('lastWorn');
 
   const handleLinkClick = () => {
     dispatch({
@@ -17,6 +21,16 @@ const SneakerContainer = (props) => {
       payload: props.sneaker,
     });
   };
+
+  useEffect(() => {
+      const input = JSON.parse(lastWornConfig).filter((sneaker) => sneaker.styleNumber === styleNumber)[0]["lastWorn"];
+      let displayVal = null;
+      if(!(input === null || input === undefined)) {
+        const [day, month, year] =  input.split('-');
+        displayVal = `${year}-${month}-${day}`;
+      }
+      setLastWorn(displayVal);
+  }, [lastWornConfig, styleNumber]);
 
   return (
     <div className="item-container ">
@@ -45,6 +59,7 @@ const SneakerContainer = (props) => {
                       )?.toLocaleString()
                     }`}
                 </label>
+                <label className="right-panel-last-worn">{lastWorn === null ? "Not Worn" : lastWorn}</label>
               </div>
             </div>
           </div>
@@ -69,6 +84,7 @@ const SneakerContainer = (props) => {
                     )?.toLocaleString()
                   }`}
               </label>
+              <label className="right-panel-last-worn">{lastWorn === null ? "Not Worn" : lastWorn}</label>
             </div>
           </div>
         </div>

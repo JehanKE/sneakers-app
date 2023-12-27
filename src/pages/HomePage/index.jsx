@@ -5,7 +5,7 @@ import SneakerContainer from "../../components/SneakerContainer";
 import SummaryContainer from "../../components/SummaryContainer";
 import Tabs from "../../components/Tabs";
 import { sneakerConfig } from "../../configs/SneakerConfig";
-import { getSortedList } from "../../utils/utils";
+import { getLastWornConfig, getSortedList } from "../../utils/utils";
 import { AutoComplete } from 'antd';
 import "./index.scss";
 
@@ -17,6 +17,12 @@ const HomePage = () => {
   const [options,setOptions] = useState();
   const [searchValue,setSearchValue] = useState('');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(localStorage.getItem('lastWorn') === null) {
+      localStorage.setItem('lastWorn', JSON.stringify(getLastWornConfig()));
+    }
+  });
 
   useEffect(() => {
     setSneakerList(

@@ -1,12 +1,40 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { BsFillBagFill } from "react-icons/bs";
+import { getTodaysDate, mapBrandToIcon } from "../../utils/utils";
+import { useEffect, useState } from "react";
 import "./index.scss";
-import { mapBrandToIcon } from "../../utils/utils";
 
 const SneakerPage = () => {
   const { sneakerPage } = useSelector((state) => state.sneaker);
+  const [lastWorn, setLastWorn] = useState(null);
+  const lastWornConfig = localStorage.getItem('lastWorn');
+  const dispatch = useDispatch();
+
+  const handleDateChange = (event) => {
+    const currentLastWorn = JSON.parse(lastWornConfig);
+    const index = currentLastWorn.findIndex(sneaker => sneaker.styleNumber === sneakerPage.styleNumber);
+    currentLastWorn.splice(index, 1, { styleNumber: sneakerPage.styleNumber, lastWorn: event.target.value });
+    localStorage.setItem("lastWorn",JSON.stringify(currentLastWorn));
+  };
+
+  useEffect(() => {
+    let defaultVal = null;
+    const input = JSON.parse(lastWornConfig).filter((sneaker) => sneaker.styleNumber === sneakerPage.styleNumber)[0]["lastWorn"];
+    if(!(input === null || input === undefined)) {
+      const [day, month, year] =  input.split('-');
+      defaultVal = `${year}-${month}-${day}`;
+    }
+    setLastWorn( (input === null || input === undefined) ? null : defaultVal );
+  }, [lastWornConfig, sneakerPage.styleNumber]);
+
+  useEffect(() => {
+    dispatch({
+      type: "sneaker/updateSortType",
+      payload: null,
+    });
+  });
 
   return (
     <div className="sneaker-page-container">
@@ -56,6 +84,12 @@ const SneakerPage = () => {
           <div className="detail-wrapper">
             <label className="detail-title">RELEASE DATE</label>
             <label className="detail-content">{sneakerPage.releaseDate}</label>
+          </div>
+          <div className="detail-wrapper">
+            <label className="detail-title">LAST WORN</label>
+            <label className="detail-content">
+              <input className="date-picker" type="date" onChange={handleDateChange} defaultValue={lastWorn} max={getTodaysDate()}/>
+            </label>
           </div>
         </div>
       </div>
